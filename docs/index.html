@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQwash: Distributionally Robust Learning in PyTorch with 1 Additional Line of Code &#8212; sqwash 0.1.0 documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="#">
+      
+      
+      <h1 class="site-logo" id="site-title">sqwash 0.1.0 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/index.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/krishnap25/sqwash"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-start">
+   Quick Start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functionality">
+   Functionality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mathematical-definitions">
+   Mathematical Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authors">
+   Authors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cite">
+   Cite
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgments">
+   Acknowledgments
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sqwash-distributionally-robust-learning-in-pytorch-with-1-additional-line-of-code">
+<h1>SQwash: Distributionally Robust Learning in PyTorch with 1 Additional Line of Code<a class="headerlink" href="#sqwash-distributionally-robust-learning-in-pytorch-with-1-additional-line-of-code" title="Permalink to this headline">¶</a></h1>
+<p>This package implements reducers based on the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Expected_shortfall">superquantile</a>
+a.k.a. Conditional Value at Risk (CVaR) for distributionally robust learning in PyTorch with GPU support.
+The package is licensed under the GPLv3 license.</p>
+<p>The superquantile allows for distributional robustness by averaging over the worst
+<span class="math notranslate nohighlight">\(\theta\)</span> fraction of the losses in each minibatch, as illustrated in the following figure.</p>
+<a class="reference internal image-reference" href="_images/superquantile2.png"><img alt="_images/superquantile2.png" src="_images/superquantile2.png" style="width: 720.0px; height: 234.0px;" /></a>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#installation"><span class="std std-ref">Installation</span></a></p></li>
+<li><p><a class="reference internal" href="#quick-start"><span class="std std-ref">Quick Start</span></a></p></li>
+<li><p><a class="reference internal" href="#functionality"><span class="std std-ref">Functionality</span></a></p></li>
+<li><p><a class="reference internal" href="#mathematical-definitions"><span class="std std-ref">Mathematical Definitions</span></a></p></li>
+<li><p><a class="reference external" href="api.html">API Details</a></p></li>
+<li><p><a class="reference internal" href="#authors"><span class="std std-ref">Authors</span></a></p></li>
+<li><p><a class="reference internal" href="#cite"><span class="std std-ref">Cite</span></a></p></li>
+<li><p><a class="reference internal" href="#acknowledgments"><span class="std std-ref">Acknowledgments</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Once you have PyTorch &gt;=1.7, you can grab SQwash from pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install sqwash
+</pre></div>
+</div>
+<p>Alternatively, if you would like to edit the package, clone the repository, <cite>cd</cite> into the main directory of the repository and run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install -e .
+</pre></div>
+</div>
+<p>The only dependency of SQwash is PyTorch, version 1.7 or higher.
+See <a class="reference external" href="https://pytorch.org/">the PyTorch webpage</a> for install instructions.</p>
+</div>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>As the name suggests, it requires only a one-line modification to the usual PyTorch training loops.
+See the notebooks folder for <a class="reference external" href="https://github.com/krishnap25/sqwash/notebooks/cifar10_example.ipynb">a full example on CIFAR-10</a>.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">sqwash</span> <span class="kn">import</span> <span class="n">SuperquantileReducer</span>
+  <span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>  <span class="c1"># set `reduction=&#39;none&#39;`</span>
+<span class="hll">  <span class="n">reducer</span> <span class="o">=</span> <span class="n">SuperquantileReducer</span><span class="p">(</span><span class="n">superquantile_tail_fraction</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># define the reducer</span>
+</span>
+  <span class="c1"># Training loop</span>
+  <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+      <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="n">batch_losses</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># shape: (batch_size,)</span>
+<span class="hll">      <span class="n">loss</span> <span class="o">=</span> <span class="n">reducer</span><span class="p">(</span><span class="n">batch_losses</span><span class="p">)</span>  <span class="c1"># Additional line to use the superquantile reducer</span>
+</span>      <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  <span class="c1"># Proceed as usual from here</span>
+      <span class="o">...</span>
+</pre></div>
+</td></tr></table></div>
+<p>The package also gives a functional version of the reducers, similar to <code class="docutils literal notranslate"><span class="pre">torch.nn.functional</span></code>:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="hll">  <span class="kn">from</span> <span class="nn">sqwash</span> <span class="kn">import</span> <span class="n">reduce_superquantile</span>
+</span>
+  <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+      <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="n">batch_losses</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>  <span class="c1"># must set `reduction=&#39;none&#39;`</span>
+<span class="hll">      <span class="n">loss</span> <span class="o">=</span> <span class="n">reduce_superquantile</span><span class="p">(</span><span class="n">batch_losses</span><span class="p">,</span> <span class="n">superquantile_tail_fraction</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Additional line</span>
+</span>      <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  <span class="c1"># Proceed as usual from here</span>
+      <span class="o">...</span>
+</pre></div>
+</td></tr></table></div>
+<p>The package can also be used for distributionally robust learning over
+pre-specified groups of data. Simply obtain a tensor of losses for each element of the batch and
+use the reducers in this pacakge as follows:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">loss_per_group</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># shape: (num_groups,)</span>
+  <span class="n">reducer</span> <span class="o">=</span> <span class="n">reduce_superquantile</span><span class="p">(</span><span class="n">loss_per_group</span><span class="p">,</span> <span class="n">superquantile_tail_fraction</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="functionality">
+<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h2>
+<p>This package provides 3 reducers, which take a tensor of losses on a minibatch and reduce them to a single value.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">MeanReducer</span></code>: the usual reduction, which is equivalent to specifying <code class="docutils literal notranslate"><span class="pre">reduction='mean'</span></code> in your criterion.</dt><dd><p>Given a <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> denoting a vector <span class="math notranslate nohighlight">\(\ell = (\ell_1, \cdots, \ell_n)\)</span>, the <code class="docutils literal notranslate"><span class="pre">MeanReducer</span></code>
+simply returns the mean <span class="math notranslate nohighlight">\(\sum_{i=1}^n \ell_i / n\)</span>. The functional equivalent of this is
+<code class="docutils literal notranslate"><span class="pre">reduce_mean</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">SuperquantileReducer</span></code>: computes the superquantile/CVaR of the batch losses.</dt><dd><p>Given a <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> denoting a vector <span class="math notranslate nohighlight">\(\ell = (\ell_1, \cdots, \ell_n)\)</span>, the <code class="docutils literal notranslate"><span class="pre">SuperquantileReducer</span></code>
+with a <code class="docutils literal notranslate"><span class="pre">superquantile_tail_fraction</span></code> denoted by <span class="math notranslate nohighlight">\(\theta\)</span> returns the <span class="math notranslate nohighlight">\((1-\theta)-\)</span> superquantile <span class="math notranslate nohighlight">\(\mathrm{SQ}_\theta\)</span> of <span class="math notranslate nohighlight">\(\ell\)</span>.
+See the <a class="reference internal" href="#mathematical-definitions"><span class="std std-ref">Mathematical Definitions</span></a> for its precise definition.
+Its functional counterpart is <code class="docutils literal notranslate"><span class="pre">reduce_superquantile</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">SuperquantileSmoothReducer</span></code>: computes a smooth counterpart of the superquantile/CVaR of the batch losses.</dt><dd><p>Given a <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> denoting a vector <span class="math notranslate nohighlight">\(\ell = (\ell_1, \cdots, \ell_n)\)</span>, the <code class="docutils literal notranslate"><span class="pre">SuperquantileReducer</span></code>
+with a <code class="docutils literal notranslate"><span class="pre">superquantile_tail_fraction</span></code> denoted by <span class="math notranslate nohighlight">\(\theta\)</span> and a smoothing parameter
+denoted by <span class="math notranslate nohighlight">\(\nu\)</span>
+returns the <span class="math notranslate nohighlight">\(\nu-\)</span> smoothed <span class="math notranslate nohighlight">\((1-\theta)-\)</span> superquantile <span class="math notranslate nohighlight">\(\mathrm{SQ}_\theta^\nu\)</span> of <span class="math notranslate nohighlight">\(\ell\)</span>.
+See the <a class="reference internal" href="#mathematical-definitions"><span class="std std-ref">Mathematical Definitions</span></a> for its precise definition.
+Its functional counterpart is <code class="docutils literal notranslate"><span class="pre">reduce_superquantile_smooth</span></code>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See here for <a class="reference external" href="api.html">details of the API.</a>
+Each of these reducers work just as well with cuda tensors for efficient
+distributionally robust learning on the GPU.</p>
+</div>
+<div class="section" id="mathematical-definitions">
+<h2>Mathematical Definitions<a class="headerlink" href="#mathematical-definitions" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math notranslate nohighlight">\((1-\theta)-\)</span> superquantile of <span class="math notranslate nohighlight">\(\ell=(\ell_1, \cdots, \ell_n)\)</span>
+to an average over the <span class="math notranslate nohighlight">\(\theta\)</span> fraction of the largest elements of
+<span class="math notranslate nohighlight">\(\ell\)</span>, if <span class="math notranslate nohighlight">\(n\theta\)</span> is an integer. See the figure at the top of the page.
+Formally, it is given by the two equivalent expressions (which are also valid when
+<span class="math notranslate nohighlight">\(n\theta\)</span> is not an integer):</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{SQ}_{\theta}(\ell) = \max\Bigg\{ q^\top \ell \, : \, q \in R^n_+, \, q^\top 1 = 1, \, q_i \le \frac{1}{n\theta} \Bigg\}
+    = \min_{\eta \in R} \Bigg\{ \eta + \frac{1}{n\theta} \sum_{i=1}^n \max\{\ell_i - \eta, 0\}  \Bigg\}.\]</div>
+<p>The <span class="math notranslate nohighlight">\(\nu-\)</span> smoothed <span class="math notranslate nohighlight">\((1-\theta)-\)</span> superquantile of <span class="math notranslate nohighlight">\(\ell=(\ell_1, \cdots, \ell_n)\)</span>
+is given by</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{SQ}_{\theta}^\nu(\ell) = \max\Bigg\{ q^\top \ell - \frac{\nu}{2n}\big\|q - u \big\|^2_2 \, : \, q \in R^n_+, \, q^\top 1 = 1, \, q_i \le \frac{1}{n\theta} \Bigg\}.\]</div>
+<p>where <span class="math notranslate nohighlight">\(u = \mathbf{1}_n / n\)</span> denotes the uniform distribution over <span class="math notranslate nohighlight">\(n\)</span> atoms.</p>
+</div>
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://homes.cs.washington.edu/~pillutla/">Krishna Pillutla</a></p></li>
+<li><p><a class="reference external" href="https://yassine-laguel.github.io">Yassine Laguel</a></p></li>
+<li><p><a class="reference external" href="https://ljk.imag.fr/membres/Jerome.Malick/">Jérôme Malick</a></p></li>
+<li><p><a class="reference external" href="http://faculty.washington.edu/zaid/">Zaid Harchaoui</a></p></li>
+</ul>
+<p>For any questions or comments, please raise an issue on github, or
+contact <a class="reference external" href="https://krishnap25.github.io">Krishna Pillutla</a>.</p>
+</div>
+<div class="section" id="cite">
+<h2>Cite<a class="headerlink" href="#cite" title="Permalink to this headline">¶</a></h2>
+<p>If you found this package useful, please cite the following work.
+If you use this code, please cite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">DBLP</span><span class="p">:</span><span class="n">conf</span><span class="o">/</span><span class="n">ciss</span><span class="o">/</span><span class="n">LPMH21</span><span class="p">,</span>
+<span class="n">author</span>    <span class="o">=</span> <span class="p">{</span><span class="n">Yassine</span> <span class="n">Laguel</span> <span class="ow">and</span>
+            <span class="n">Krishna</span> <span class="n">Pillutla</span> <span class="ow">and</span>
+            <span class="n">J</span><span class="p">{</span>\<span class="s1">&#39;</span><span class="si">{e}</span><span class="s1">}r{\^</span><span class="si">{o}</span><span class="s1">}me Malick and</span>
+            <span class="n">Zaid</span> <span class="n">Harchaoui</span><span class="p">},</span>
+<span class="n">title</span>     <span class="o">=</span> <span class="p">{{</span><span class="n">A</span> <span class="n">Superquantile</span> <span class="n">Approach</span> <span class="n">to</span> <span class="n">Federated</span> <span class="n">Learning</span> <span class="k">with</span> <span class="n">Heterogeneous</span>
+            <span class="n">Devices</span><span class="p">}},</span>
+<span class="n">booktitle</span> <span class="o">=</span> <span class="p">{</span><span class="mi">55</span><span class="n">th</span> <span class="n">Annual</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Information</span> <span class="n">Sciences</span> <span class="ow">and</span> <span class="n">Systems</span><span class="p">,</span> <span class="p">{</span><span class="n">CISS</span><span class="p">}</span>
+            <span class="mi">2021</span><span class="p">,</span> <span class="n">Baltimore</span><span class="p">,</span> <span class="n">MD</span><span class="p">,</span> <span class="n">USA</span><span class="p">,</span> <span class="n">March</span> <span class="mi">24</span><span class="o">-</span><span class="mi">26</span><span class="p">,</span> <span class="mi">2021</span><span class="p">},</span>
+<span class="n">pages</span>     <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="o">--</span><span class="mi">6</span><span class="p">},</span>
+<span class="n">publisher</span> <span class="o">=</span> <span class="p">{{</span><span class="n">IEEE</span><span class="p">}},</span>
+<span class="n">year</span>      <span class="o">=</span> <span class="p">{</span><span class="mi">2021</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h2>
+<p>We acknowledge support from NSF DMS 2023166,
+DMS 1839371, CCF 2019844, the CIFAR program “Learning
+in Machines and Brains”, faculty research awards, and a JP
+Morgan PhD fellowship. This work has been partially supported
+by MIAI – Grenoble Alpes, (ANR-19-P3IA-0003).</p>
+</div>
+</div>
+
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Krishna Pillutla<br/>
+        
+            &copy; Copyright 2021, Krishna Pillutla.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
