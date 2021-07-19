@@ -7,6 +7,9 @@ some fraction of the worst losses on the minibatch in each step, as illustrated 
 
 <img src='fig/superquantile2.png' width=500>
 
+# Documentation
+Please find the documentation [here](https://krishnap25.github.io/sqwash/).
+
 # Installation
 Once you have PyTorch >=1.7, you can grab SQwash from pip:
 ```bash
