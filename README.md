@@ -7,6 +7,9 @@ some fraction of the worst losses on the minibatch in each step, as illustrated 
 
 <img src='fig/superquantile2.png' width=500>
 
+
+For a demo of SQwash in action, please see [this colab](https://colab.research.google.com/drive/1GApiM0AsMb6Zw1O4dgL5iGRlWlsIaH6s?usp=sharing).
+
 # Documentation
 Please find the documentation [here](https://krishnap25.github.io/sqwash/).
 
