@@ -10,10 +10,10 @@ a.k.a. Conditional Value at Risk (CVaR) for distributionally robust learning in 
 The package is licensed under the GPLv3 license.
 
 The superquantile allows for distributional robustness by averaging over the worst 
-:math:`\theta` fraction of the losses in each minibatch, as illustrated in the following figure.
+:math:`\alpha` fraction of the losses in each minibatch, as illustrated in the following figure.
 
-.. image:: ../fig/superquantile2.png
-   :scale: 50 %
+.. image:: ../fig/superquantile3.png
+   :scale: 30 %
 
 Table of Contents
 ------------------
@@ -102,15 +102,15 @@ This package provides 3 reducers, which take a tensor of losses on a minibatch a
 
 * ``SuperquantileReducer``: computes the superquantile/CVaR of the batch losses.
     Given a ``torch.Tensor`` denoting a vector :math:`\ell = (\ell_1, \cdots, \ell_n)`, the ``SuperquantileReducer`` 
-    with a ``superquantile_tail_fraction`` denoted by :math:`\theta` returns the :math:`(1-\theta)-` superquantile :math:`\mathrm{SQ}_\theta` of :math:`\ell`.
+    with a ``superquantile_tail_fraction`` denoted by :math:`\alpha` returns the :math:`(1-\alpha)-` superquantile :math:`\mathrm{SQ}_\alpha` of :math:`\ell`.
     See the :ref:`mathematical definitions` for its precise definition.
     Its functional counterpart is ``reduce_superquantile``.
 
 * ``SuperquantileSmoothReducer``: computes a smooth counterpart of the superquantile/CVaR of the batch losses.
     Given a ``torch.Tensor`` denoting a vector :math:`\ell = (\ell_1, \cdots, \ell_n)`, the ``SuperquantileReducer`` 
-    with a ``superquantile_tail_fraction`` denoted by :math:`\theta` and a smoothing parameter 
+    with a ``superquantile_tail_fraction`` denoted by :math:`\alpha` and a smoothing parameter 
     denoted by :math:`\nu`
-    returns the :math:`\nu-` smoothed :math:`(1-\theta)-` superquantile :math:`\mathrm{SQ}_\theta^\nu` of :math:`\ell`.
+    returns the :math:`\nu-` smoothed :math:`(1-\alpha)-` superquantile :math:`\mathrm{SQ}_\alpha^\nu` of :math:`\ell`.
     See the :ref:`mathematical definitions` for its precise definition.
     Its functional counterpart is ``reduce_superquantile_smooth``.
 
@@ -121,23 +121,23 @@ distributionally robust learning on the GPU.
 Mathematical Definitions
 ------------------------
 
-The :math:`(1-\theta)-` superquantile of :math:`\ell=(\ell_1, \cdots, \ell_n)`
-to an average over the :math:`\theta` fraction of the largest elements of 
-:math:`\ell`, if :math:`n\theta` is an integer. See the figure at the top of the page.
+The :math:`(1-\alpha)-` superquantile of :math:`\ell=(\ell_1, \cdots, \ell_n)`
+to an average over the :math:`\alpha` fraction of the largest elements of 
+:math:`\ell`, if :math:`n\alpha` is an integer. See the figure at the top of the page.
 Formally, it is given by the two equivalent expressions (which are also valid when 
-:math:`n\theta` is not an integer):
+:math:`n\alpha` is not an integer):
 
 .. math:: 
 
-    \mathrm{SQ}_{\theta}(\ell) = \max\Bigg\{ q^\top \ell \, : \, q \in R^n_+, \, q^\top 1 = 1, \, q_i \le \frac{1}{n\theta} \Bigg\}
-        = \min_{\eta \in R} \Bigg\{ \eta + \frac{1}{n\theta} \sum_{i=1}^n \max\{\ell_i - \eta, 0\}  \Bigg\}.
+    \mathrm{SQ}_{\alpha}(\ell) = \max\Bigg\{ q^\top \ell \, : \, q \in R^n_+, \, q^\top 1 = 1, \, q_i \le \frac{1}{n\alpha} \Bigg\}
+        = \min_{\eta \in R} \Bigg\{ \eta + \frac{1}{n\alpha} \sum_{i=1}^n \max\{\ell_i - \eta, 0\}  \Bigg\}.
 
-The :math:`\nu-` smoothed :math:`(1-\theta)-` superquantile of :math:`\ell=(\ell_1, \cdots, \ell_n)`
+The :math:`\nu-` smoothed :math:`(1-\alpha)-` superquantile of :math:`\ell=(\ell_1, \cdots, \ell_n)`
 is given by
 
 .. math:: 
 
-    \mathrm{SQ}_{\theta}^\nu(\ell) = \max\Bigg\{ q^\top \ell - \frac{\nu}{2n}\big\|q - u \big\|^2_2 \, : \, q \in R^n_+, \, q^\top 1 = 1, \, q_i \le \frac{1}{n\theta} \Bigg\}.
+    \mathrm{SQ}_{\alpha}^\nu(\ell) = \max\Bigg\{ q^\top \ell - \frac{\nu}{2n}\big\|q - u \big\|^2_2 \, : \, q \in R^n_+, \, q^\top 1 = 1, \, q_i \le \frac{1}{n\alpha} \Bigg\}.
 
 where :math:`u = \mathbf{1}_n / n` denotes the uniform distribution over :math:`n` atoms.
 
@@ -157,19 +157,27 @@ Cite
 If you found this package useful, please cite the following work.
 If you use this code, please cite::
 
-    @inproceedings{DBLP:conf/ciss/LPMH21,
-    author    = {Yassine Laguel and
-                Krishna Pillutla and
-                J{\'{e}}r{\^{o}}me Malick and
-                Zaid Harchaoui},
-    title     = {{A Superquantile Approach to Federated Learning with Heterogeneous
-                Devices}},
-    booktitle = {55th Annual Conference on Information Sciences and Systems, {CISS}
-                2021, Baltimore, MD, USA, March 24-26, 2021},
-    pages     = {1--6},
-    publisher = {{IEEE}},
-    year      = {2021},
-    }
+	@article{sfl_mlj_2023,
+	title = {Federated Learning with Superquantile Aggregation for Heterogeneous Data},
+	author={Pillutla, Krishna and Laguel, Yassine and Malick, J{\'{e}}r{\^{o}}me and Harchaoui, Zaid},
+	journal   = {Mach. Learn.},
+	year = {2023},
+	publisher={Springer}
+	}
+
+	@inproceedings{DBLP:conf/ciss/LPMH21,
+	author    = {Yassine Laguel and
+		Krishna Pillutla and
+		J{\'{e}}r{\^{o}}me Malick and
+		Zaid Harchaoui},
+	title     = {{A Superquantile Approach to Federated Learning with Heterogeneous
+		Devices}},
+	booktitle = {55th Annual Conference on Information Sciences and Systems, {CISS}
+		2021, Baltimore, MD, USA, March 24-26, 2021},
+	pages     = {1--6},
+	publisher = {{IEEE}},
+	year      = {2021},
+	}
 
 
 Acknowledgments

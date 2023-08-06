@@ -5,7 +5,7 @@ a.k.a. Conditional Value at Risk (CVaR) for distributionally robust learning in 
 The superquantile achieves distributional robustness by averaging over 
 some fraction of the worst losses on the minibatch in each step, as illustrated in this figure:
 
-<img src='fig/superquantile2.png' width=500>
+<img src='fig/superquantile3.png' width=500>
 
 
 For a demo of SQwash in action, please see [this colab](https://colab.research.google.com/drive/1GApiM0AsMb6Zw1O4dgL5iGRlWlsIaH6s?usp=sharing).
@@ -111,6 +111,14 @@ SQwash is available under the GPLv3 license. Please see the [license](LICENSE) f
 # Citation
 If you found this package useful, please cite the following paper
 ```
+@article{sfl_mlj_2023,
+title = {Federated Learning with Superquantile Aggregation for Heterogeneous Data},
+author={Pillutla, Krishna and Laguel, Yassine and Malick, J{\'{e}}r{\^{o}}me and Harchaoui, Zaid},
+journal   = {Mach. Learn.},
+year = {2023},
+publisher={Springer}
+}
+
 @inproceedings{DBLP:conf/ciss/LPMH21,
   author    = {Yassine Laguel and
                Krishna Pillutla and
