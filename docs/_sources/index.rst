@@ -13,7 +13,7 @@ The superquantile allows for distributional robustness by averaging over the wor
 :math:`\theta` fraction of the losses in each minibatch, as illustrated in the following figure.
 
 .. image:: ../fig/superquantile3.png
-   :scale: 50 %
+   :scale: 30 %
 
 Table of Contents
 ------------------
@@ -157,19 +157,27 @@ Cite
 If you found this package useful, please cite the following work.
 If you use this code, please cite::
 
-    @inproceedings{DBLP:conf/ciss/LPMH21,
-    author    = {Yassine Laguel and
-                Krishna Pillutla and
-                J{\'{e}}r{\^{o}}me Malick and
-                Zaid Harchaoui},
-    title     = {{A Superquantile Approach to Federated Learning with Heterogeneous
-                Devices}},
-    booktitle = {55th Annual Conference on Information Sciences and Systems, {CISS}
-                2021, Baltimore, MD, USA, March 24-26, 2021},
-    pages     = {1--6},
-    publisher = {{IEEE}},
-    year      = {2021},
-    }
+	@article{sfl_mlj_2023,
+	title = {Federated Learning with Superquantile Aggregation for Heterogeneous Data},
+	author={Pillutla, Krishna and Laguel, Yassine and Malick, J{\'{e}}r{\^{o}}me and Harchaoui, Zaid},
+	journal   = {Mach. Learn.},
+	year = {2023},
+	publisher={Springer}
+	}
+
+	@inproceedings{DBLP:conf/ciss/LPMH21,
+	author    = {Yassine Laguel and
+		Krishna Pillutla and
+		J{\'{e}}r{\^{o}}me Malick and
+		Zaid Harchaoui},
+	title     = {{A Superquantile Approach to Federated Learning with Heterogeneous
+		Devices}},
+	booktitle = {55th Annual Conference on Information Sciences and Systems, {CISS}
+		2021, Baltimore, MD, USA, March 24-26, 2021},
+	pages     = {1--6},
+	publisher = {{IEEE}},
+	year      = {2021},
+	}
 
 
 Acknowledgments
