@@ -47,7 +47,7 @@ Quick Start
 --------------
 
 As the name suggests, it requires only a one-line modification to the usual PyTorch training loops.
-See the notebooks folder for `a full example on CIFAR-10 <https://github.com/krishnap25/sqwash/notebooks/cifar10_example.ipynb>`_.
+See the notebooks folder for `a full example on CIFAR-10 <https://github.com/krishnap25/sqwash/blob/main/notebooks/cifar10_example.ipynb>`_.
 
 .. code-block:: python
   :linenos:
